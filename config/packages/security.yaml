@@ -21,28 +21,13 @@ security:
             pattern: ^/api/login
             stateless: true
             json_login:
-                check_path: /api/login_check # or api_login_check as defined in config/routes.yaml
+                check_path: /api/login_check
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-
-        produits:
-            pattern: ^/api/produits
-            methods: [ POST, PUT, PATCH, DELETE ]
+        api:
+            pattern: ^/api
             stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
-#        users:
-#            pattern: ^/api/users
-#            methods: [ POST, PUT, PATCH, DELETE ]
-#            stateless: true
-#            guard:
-#                authenticators:
-#                    - lexik_jwt_authentication.jwt_token_authenticator
-
-        main:
-            lazy: true
-            provider: app_user_provider
+            jwt: ~
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -55,8 +40,6 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-         - { path: ^api/users, roles: PUBLIC_ACCESS }
-         - { path: ^/api/produits, roles: IS_AUTHENTICATED_FULLY, methods: [ POST, PUT, PATCH, DELETE ] }
 #         - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [ POST, PUT, PATCH, DELETE ] }
 
 when@test:

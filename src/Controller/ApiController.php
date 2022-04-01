@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
 use App\Entity\Produits;
-use App\Entity\Users;
+use App\Entity\UserClient;
+use App\Repository\ClientRepository;
 use App\Repository\ProduitsRepository;
+use App\Repository\UserClientRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,6 +21,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ApiController extends AbstractController
 {
+
     /**
      * @Route("/api/produits", name="api_produits_index", methods="GET")
      */
@@ -88,22 +92,67 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/users", name="api_users_insert", methods="POST")
+     * @Route("/api/produits", name="api_users_delete", methods="DELETE")
      */
-    public function insertUsers(Request $request,SerializerInterface $serializer,
+    public function deleteUser(Request $request,SerializerInterface $serializer,
                                   EntityManagerInterface $em, ValidatorInterface $validator)
     {
         $jsonRetrieve = $request->getContent();
         // Désérialization on par de JSON et on le transforme en tableau associatif php
         // On récupère le json, et on le tranforme en tableau associatif qui se base sur l'entité Produits
         try{
-            $users = $serializer->deserialize($jsonRetrieve,Users::class,'json');
+            $produits = $serializer->deserialize($jsonRetrieve,Produits::class,'json');
+
+            // On vérifie si il y a des erreurs
+            $errors = $validator->validate($produits);
+            if(count($errors) > 0){
+                return $this->json($errors,400);
+            }
+
+            $em->persist($produits);
+            $em->flush();
+
+            // Status 201 veux dire qu'une ressource à été crée sur le serveur
+            return $this->json($produits, 201,['groups' => 'produits:read']);
+        } catch(NotEncodableValueException $e) {
+            return $this->json([
+                'status' => 400,
+                'message' => $e->getMessage()
+            ],400);
+        }
+        // dd($produits);
+    }
+
+    /**
+     * Récuprération des utilisateurs en lien avec le client
+     * @Route("/api/users", name="api_users_index", methods="GET")
+     */
+    public function getUsers(UserClientRepository $UserClientRepository, NormalizerInterface $normalizer,SerializerInterface $serializer)
+    {
+        $users = $UserClientRepository->findAll();
+        // Pour faire le tout en une ligne :
+        return $this->json($users, 200,['groups' => 'user:read']);
+    }
+
+    /**
+     * @Route("/api/users", name="api_users_insert", methods="POST")
+     */
+    public function insertUsers(Request $request,SerializerInterface $serializer,
+                                  EntityManagerInterface $em, ValidatorInterface $validator)
+    {
+        $user = $this->getUser();
+        $jsonRetrieve = $request->getContent();
+        // Désérialization on par de JSON et on le transforme en tableau associatif php
+        // On récupère le json, et on le tranforme en tableau associatif qui se base sur l'entité Produits
+        try{
+            $users = $serializer->deserialize($jsonRetrieve,UserClient::class,'json');
 
             // On vérifie si il y a des erreurs
             $errors = $validator->validate($users);
             if(count($errors) > 0){
                 return $this->json($errors,400);
             }
+//            $users->addClient($user);
 
             $em->persist($users);
             $em->flush();
@@ -117,4 +166,5 @@ class ApiController extends AbstractController
             ],400);
         }
     }
+
 }

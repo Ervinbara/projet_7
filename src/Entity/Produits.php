@@ -36,6 +36,7 @@ class Produits
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("produits:read")
      */
     private $description;
 

@@ -6,6 +6,7 @@ use App\Repository\UserClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserClientRepository::class)
@@ -16,21 +17,24 @@ class UserClient
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("user:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("user:read")
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("user:read")
      */
     private $firstname;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Client::class, inversedBy="userClients")
+     * @ORM\ManyToMany(targetEntity=Client::class, inversedBy="userClients", cascade={"persist"})
      */
     private $clients;
 
