@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="no commit message">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="Créations des endpoints et des controllers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/api/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/api/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Api/loginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/loginTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +19,6 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="create_database" />
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
@@ -193,13 +191,17 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="PHPUnit.phpunit.xml.dist">
+  <component name="RunManager" selected="PHPUnit.loginTest">
     <configuration name="Usertest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\Unit\Usertest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Unit/Usertest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="Usertest.test" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\Unit\Usertest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Unit/Usertest.php" method="test" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="loginTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="loginTest.testValid" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -212,6 +214,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.loginTest" />
         <item itemvalue="PHPUnit.loginTest.testValid" />
         <item itemvalue="PHPUnit.Usertest.test" />
         <item itemvalue="PHPUnit.Usertest" />
@@ -243,7 +246,8 @@
       <workItem from="1648645771242" duration="3919000" />
       <workItem from="1648755672402" duration="654000" />
       <workItem from="1648759319109" duration="5180000" />
-      <workItem from="1648819087919" duration="1091000" />
+      <workItem from="1648819087919" duration="3872000" />
+      <workItem from="1648900658806" duration="6801000" />
     </task>
     <task id="LOCAL-00001" summary="Création de la base de données">
       <created>1648214583309</created>
@@ -280,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648819655076</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Créations des endpoints et des controllers">
+      <created>1648820254923</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1648820254923</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +329,8 @@
     <MESSAGE value="Création de la base de données" />
     <MESSAGE value="Mise en place du JWT" />
     <MESSAGE value="no commit message" />
-    <option name="LAST_COMMIT_MESSAGE" value="no commit message" />
+    <MESSAGE value="Créations des endpoints et des controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Créations des endpoints et des controllers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -331,6 +343,11 @@
             <option name="methodName" value="test" />
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/Api/loginTest.php</url>
+          <line>6</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

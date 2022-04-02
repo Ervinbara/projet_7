@@ -2,17 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Client;
 use App\Entity\Produits;
-use App\Entity\UserClient;
-use App\Repository\ClientRepository;
 use App\Repository\ProduitsRepository;
-use App\Repository\UserClientRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -56,9 +50,11 @@ class ProductController extends AbstractController
      * Récuprération du détail d'un produit
      * @Route("/api/produits/{id}", name="api_produit_detail", methods="GET")
      */
-    public function getProductDetails(UserClientRepository $UserClientRepository, NormalizerInterface $normalizer,SerializerInterface $serializer)
+    public function getProductDetails(Produits $p,ProduitsRepository $produitsRepository)
     {
-
+//        $produit = $produitsRepository->find($p);
+        $produits = $produitsRepository->findOneBy(['id' => $p->getId()]);
+        return $this->json($produits, 200,['groups' => 'produits:read']);
     }
 
     /**
@@ -90,7 +86,6 @@ class ProductController extends AbstractController
                  'message' => $e->getMessage()
              ],400);
         }
-        // dd($produits);
     }
 
 
