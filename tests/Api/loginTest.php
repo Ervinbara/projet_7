@@ -6,22 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class loginTest extends WebTestCase
 {
-    public $loginPayload = '{"email: "%s", "password: "%s"}';
-
-    public $serverInformation = ['ACCEPT'=>'application/json', 'CONTENT_TYPE'=>'application/json'];
-
-    public function testValid(){
+    public function testTokenIsValid()
+    {
         $client = static::createClient();
-        $client->request('POST',
-            '/api/login_check',
-            $this->serverInformation,
-            (array)$this->loginPayload, ['ervin@gmail.com', 'azerty']
-        );
+        $client->jsonRequest('POST', '/api/login_check',[
+            "username"=> "ervin@gmail.com",
+            "password"=> "azerty"
+        ]);
 
-        $data = json_decode($client->getResponse()->getContent(), true);
-
-        $client->setServerParameter('HTTP_Authorization', sprintf('Bearer %s', $data['token']));
-
-        return $client;
+        $this->assertEquals( 200,$client->getResponse()->getStatusCode(), false);
+        $this->assertJson($client->getResponse()->getContent());
+        $content = json_decode($client->getResponse()->getContent(), true);
+        $this->assertArrayHasKey("token", $content);
     }
 }

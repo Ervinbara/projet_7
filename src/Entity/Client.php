@@ -19,13 +19,11 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("user:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups("user:read")
      */
     private $email;
 
@@ -41,7 +39,7 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\ManyToMany(targetEntity=UserClient::class, mappedBy="clients", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=UserClient::class, mappedBy="client", cascade={"all"})
      */
     private $userClients;
 

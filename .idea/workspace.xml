@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="Créations des endpoints et des controllers">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produits.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/UserClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserClientRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Api/loginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/loginTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,7 +197,7 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="PHPUnit.loginTest">
+  <component name="RunManager" selected="PHPUnit.loginTest.testJsonPostPageAction">
     <configuration name="Usertest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\Unit\Usertest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Unit/Usertest.php" scope="Class" />
       <method v="2" />
@@ -204,6 +210,10 @@
       <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" scope="Class" />
       <method v="2" />
     </configuration>
+    <configuration name="loginTest.testJsonPostPageAction" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" method="testJsonPostPageAction" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="loginTest.testValid" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" method="testValid" scope="Method" />
       <method v="2" />
@@ -214,6 +224,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.loginTest.testJsonPostPageAction" />
         <item itemvalue="PHPUnit.loginTest" />
         <item itemvalue="PHPUnit.loginTest.testValid" />
         <item itemvalue="PHPUnit.Usertest.test" />
@@ -247,7 +258,8 @@
       <workItem from="1648755672402" duration="654000" />
       <workItem from="1648759319109" duration="5180000" />
       <workItem from="1648819087919" duration="3872000" />
-      <workItem from="1648900658806" duration="6801000" />
+      <workItem from="1648900658806" duration="6985000" />
+      <workItem from="1648995088577" duration="8244000" />
     </task>
     <task id="LOCAL-00001" summary="Création de la base de données">
       <created>1648214583309</created>
@@ -291,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648820254923</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Créations des endpoints et des controllers">
+      <created>1648910830598</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1648910830598</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -34,14 +34,10 @@ class UserClient
     private $firstname;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Client::class, inversedBy="userClients", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="userClients")
+     * @ORM\JoinColumn(referencedColumnName="id")
      */
-    private $clients;
-
-    public function __construct()
-    {
-        $this->clients = new ArrayCollection();
-    }
+    private $client;
 
     public function getId(): ?int
     {
@@ -72,27 +68,15 @@ class UserClient
         return $this;
     }
 
-    /**
-     * @return Collection<int, Client>
-     */
-    public function getClients(): Collection
+    public function getClient(): Client
     {
-        return $this->clients;
+        return $this->client;
     }
 
-    public function addClient(Client $client): self
+    public function setClient(Client $client): self
     {
-        if (!$this->clients->contains($client)) {
-            $this->clients[] = $client;
-        }
-
+            $this->client = $client;
         return $this;
     }
 
-    public function removeClient(Client $client): self
-    {
-        $this->clients->removeElement($client);
-
-        return $this;
-    }
 }

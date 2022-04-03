@@ -42,7 +42,7 @@ class ProductController extends AbstractController
         // return $response;
 
         // Pour faire le tout en une ligne :
-        return $this->json($produits, 200,['groups' => 'produits:read']);
+        return $this->json($produits, 200,[],['groups' => 'produits:read']);
 
     }
 
@@ -54,7 +54,7 @@ class ProductController extends AbstractController
     {
 //        $produit = $produitsRepository->find($p);
         $produits = $produitsRepository->findOneBy(['id' => $p->getId()]);
-        return $this->json($produits, 200,['groups' => 'produits:read']);
+        return $this->json($produits, 200,[],['groups' => 'produits:read']);
     }
 
     /**
