@@ -1,0 +1,18 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Projet 7 OC BileMo
+            description: Documentation de l'api
+            version: 1.0.0
+        components:
+            securitySchemes:
+                Bearer:
+                    type: apiKey
+                    description: 'Authorization: Bearer {jwt}'
+                    name: Authorization
+                    in: header
+        security:
+            - Bearer: ["oui"]
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc

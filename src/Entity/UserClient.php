@@ -17,19 +17,19 @@ class UserClient
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("user:read")
+     * @Groups({"user:read", "user:detail"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("user:read")
+     * @Groups({"user:read", "user:detail"})
      */
-    private $username;
+    private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("user:read")
+     * @Groups({"user:read", "user:detail"})
      */
     private $firstname;
 
@@ -39,19 +39,31 @@ class UserClient
      */
     private $client;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("user:detail")
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("user:detail")
+     */
+    private $department;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUsername(): ?string
+    public function getLastname(): ?string
     {
-        return $this->username;
+        return $this->lastname;
     }
 
-    public function setUsername(string $username): self
+    public function setLastname(string $lastname): self
     {
-        $this->username = $username;
+        $this->lastname = $lastname;
 
         return $this;
     }
@@ -76,6 +88,30 @@ class UserClient
     public function setClient(Client $client): self
     {
             $this->client = $client;
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getDepartment(): ?string
+    {
+        return $this->department;
+    }
+
+    public function setDepartment(?string $department): self
+    {
+        $this->department = $department;
+
         return $this;
     }
 

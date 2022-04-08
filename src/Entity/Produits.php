@@ -16,28 +16,41 @@ class Produits
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("produits:read")
+     * @Groups({"produits:read", "produits:detail"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("produits:read")
+     * @Groups({"produits:read", "produits:detail"})
      * @Assert\NotBlank()
      */
     private $nom;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups("produits:read")
+     * @Groups({"produits:read", "produits:detail"})
      * @Assert\NotBlank()
      */
     private $prix;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("produits:detail")
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("produits:detail")
+     */
+    private $color;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("produits:detail")
+     */
+    private $memory;
 
     public function getId(): ?int
     {
@@ -76,6 +89,30 @@ class Produits
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getMemory(): ?string
+    {
+        return $this->memory;
+    }
+
+    public function setMemory(?string $memory): self
+    {
+        $this->memory = $memory;
 
         return $this;
     }
