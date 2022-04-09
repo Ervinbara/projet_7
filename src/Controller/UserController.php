@@ -22,6 +22,11 @@ class UserController extends AbstractController
      * Récupération des utilisateurs en lien avec le client
      * @Route("/api/users", name="api_users_index", methods="GET")
      * @TAG\Tag(name="Users")
+     * @TAG\Response(
+     *     response=200,
+     *     description="Return l'ensemble des utilisateurs liée à un client",
+     *     @Model(type=UserClient::class, groups={"user:read"})
+     * )
      */
     public function getUsers(UserClientRepository $UserClientRepository)
     {
