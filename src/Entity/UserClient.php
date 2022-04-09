@@ -17,45 +17,53 @@ class UserClient
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("user:read")
+     * @Groups({"user:read", "user:detail"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("user:read")
+     * @Groups({"user:read", "user:detail"})
      */
-    private $username;
+    private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("user:read")
+     * @Groups({"user:read", "user:detail"})
      */
     private $firstname;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Client::class, inversedBy="userClients", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="userClients")
+     * @ORM\JoinColumn(referencedColumnName="id")
      */
-    private $clients;
+    private $client;
 
-    public function __construct()
-    {
-        $this->clients = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("user:detail")
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("user:detail")
+     */
+    private $department;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUsername(): ?string
+    public function getLastname(): ?string
     {
-        return $this->username;
+        return $this->lastname;
     }
 
-    public function setUsername(string $username): self
+    public function setLastname(string $lastname): self
     {
-        $this->username = $username;
+        $this->lastname = $lastname;
 
         return $this;
     }
@@ -72,27 +80,39 @@ class UserClient
         return $this;
     }
 
-    /**
-     * @return Collection<int, Client>
-     */
-    public function getClients(): Collection
+    public function getClient(): Client
     {
-        return $this->clients;
+        return $this->client;
     }
 
-    public function addClient(Client $client): self
+    public function setClient(Client $client): self
     {
-        if (!$this->clients->contains($client)) {
-            $this->clients[] = $client;
-        }
+            $this->client = $client;
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }
 
-    public function removeClient(Client $client): self
+    public function getDepartment(): ?string
     {
-        $this->clients->removeElement($client);
+        return $this->department;
+    }
+
+    public function setDepartment(?string $department): self
+    {
+        $this->department = $department;
 
         return $this;
     }
+
 }

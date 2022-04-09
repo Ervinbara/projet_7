@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="no commit message">
-      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Api/loginTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="Récuprations des users, réglages problème référence circulaire et mise en place du test pour générer un token">
+      <change afterPath="$PROJECT_DIR$/templates/bundles/NelmioApiDocBundle/SwaggerUi/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Api/productsTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Api/usersTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/bileMo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bileMo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produits.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/UserClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/testUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Usertest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Api/loginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/loginTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="create_database" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -183,6 +186,8 @@
       <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/api-doc-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="25pi0tQi4egfCz0jG5PPyc6IQCD" />
@@ -200,17 +205,25 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="PHPUnit.phpunit.xml.dist">
-    <configuration name="Usertest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Unit\Usertest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Unit/Usertest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.loginTest.testGetUsers">
+    <configuration name="loginTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="Usertest.test" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Unit\Usertest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Unit/Usertest.php" method="test" scope="Method" />
+    <configuration name="loginTest.testGetDetailsProducts" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" method="testGetDetailsProducts" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="loginTest.testValid" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" method="testValid" scope="Method" />
+    <configuration name="loginTest.testGetProducts" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" method="testGetProducts" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="loginTest.testGetUsers" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" method="testGetUsers" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="loginTest.testTokenIsValid" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Api\loginTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Api/loginTest.php" method="testTokenIsValid" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -219,9 +232,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.loginTest.testValid" />
-        <item itemvalue="PHPUnit.Usertest.test" />
-        <item itemvalue="PHPUnit.Usertest" />
+        <item itemvalue="PHPUnit.loginTest.testGetUsers" />
+        <item itemvalue="PHPUnit.loginTest.testGetDetailsProducts" />
+        <item itemvalue="PHPUnit.loginTest" />
+        <item itemvalue="PHPUnit.loginTest.testGetProducts" />
+        <item itemvalue="PHPUnit.loginTest.testTokenIsValid" />
       </list>
     </recent_temporary>
   </component>
@@ -250,7 +265,15 @@
       <workItem from="1648645771242" duration="3919000" />
       <workItem from="1648755672402" duration="654000" />
       <workItem from="1648759319109" duration="5180000" />
-      <workItem from="1648819087919" duration="357000" />
+      <workItem from="1648819087919" duration="3872000" />
+      <workItem from="1648900658806" duration="6985000" />
+      <workItem from="1648995088577" duration="8861000" />
+      <workItem from="1649079380200" duration="1290000" />
+      <workItem from="1649160353970" duration="5776000" />
+      <workItem from="1649247148174" duration="4507000" />
+      <workItem from="1649256317943" duration="1273000" />
+      <workItem from="1649321775318" duration="613000" />
+      <workItem from="1649418947014" duration="9769000" />
     </task>
     <task id="LOCAL-00001" summary="Création de la base de données">
       <created>1648214583309</created>
@@ -266,7 +289,49 @@
       <option name="project" value="LOCAL" />
       <updated>1648215127189</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Mise en place du JWT">
+      <created>1648819512706</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1648819512706</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Mise en place du JWT">
+      <created>1648819545321</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1648819545321</updated>
+    </task>
+    <task id="LOCAL-00005" summary="no commit message">
+      <created>1648819655076</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1648819655076</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Créations des endpoints et des controllers">
+      <created>1648820254923</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1648820254923</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Créations des endpoints et des controllers">
+      <created>1648910830598</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1648910830598</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Récuprations des users, réglages problème référence circulaire et mise en place du test pour générer un token">
+      <created>1649008533226</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649008533226</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,20 +367,37 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Création de la base de données" />
+    <MESSAGE value="Mise en place du JWT" />
     <MESSAGE value="no commit message" />
-    <option name="LAST_COMMIT_MESSAGE" value="no commit message" />
+    <MESSAGE value="Créations des endpoints et des controllers" />
+    <MESSAGE value="Récuprations des users, réglages problème référence circulaire et mise en place du test pour générer un token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Récuprations des users, réglages problème référence circulaire et mise en place du test pour générer un token" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/tests/Unit/Usertest.php</url>
+          <url>file://$PROJECT_DIR$/tests/Unit/testUser.php</url>
           <line>6</line>
           <properties>
             <option name="className" value="\App\Tests\Unit\testUser" />
             <option name="methodName" value="test" />
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/tests/Api/loginTest.php</url>
+          <line>38</line>
+          <properties>
+            <option name="className" value="\App\Tests\Api\loginTest" />
+            <option name="methodName" value="testGetUsers" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/Api/loginTest.php</url>
+          <line>6</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

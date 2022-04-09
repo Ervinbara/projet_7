@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Client;
 use App\Entity\UserClient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -43,6 +44,10 @@ class UserClientRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+    public function findByClient(Client $client){
+        return $this->findBy(["client" => $client]);
     }
 
     // /**
