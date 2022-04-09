@@ -19,7 +19,7 @@ use Nelmio\ApiDocBundle\Annotation\Model;
 class UserController extends AbstractController
 {
     /**
-     * Récuprération des utilisateurs en lien avec le client
+     * Récupération des utilisateurs en lien avec le client
      * @Route("/api/users", name="api_users_index", methods="GET")
      * @TAG\Tag(name="Users")
      */
@@ -72,20 +72,11 @@ class UserController extends AbstractController
      * Insertion d'un utilisateur
      * @Route("/api/users", name="api_users_insert", methods="POST")
      * @TAG\Tag(name="Users")
-     * @TAG\Parameter(
-     *     name="firstname",
-     *     in="path",
+     * @TAG\RequestBody(
+     *     description="Add user",
      *     required=true,
-     *     description="Name of the user",
-     *     @TAG\Schema(type="string")
-     * )
-     * @TAG\Parameter(
-     *     name="lastname",
-     *     in="path",
-     *     required=true,
-     *     description="Name of the user",
-     *     @TAG\Schema(type="string")
-     * )
+     *     @Model(type=UserClient::class, groups={"user:detail"}))
+     *
      * @TAG\Response(
      *     response=201,
      *     description="Success - Return User added.",
@@ -98,10 +89,6 @@ class UserController extends AbstractController
      * @TAG\Response(
      *     response=401,
      *     description="JWT Token not found | Expired JWT Token"
-     * )
-     * @TAG\Response(
-     *     response=409,
-     *     description="User already exists with this email for this company."
      * )
      * @TAG\Response(
      *     response=500,

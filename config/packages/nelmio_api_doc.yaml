@@ -12,7 +12,7 @@ nelmio_api_doc:
                     name: Authorization
                     in: header
         security:
-            - Bearer: ["oui"]
+            - api_key: []
     areas: # to filter documented areas
         path_patterns:
             - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
