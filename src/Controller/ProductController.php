@@ -32,9 +32,9 @@ class ProductController extends AbstractController
      *        @TAG\Items(ref=@Model(type=Produits::class, groups={"produits:read"}))
      *  )
      * )
-     * @Security(name="Bearer")
+     *
      */
-    public function getProducts(ProduitsRepository $produitsRepository, NormalizerInterface $normalizer,SerializerInterface $serializer)
+    public function getProducts(ProduitsRepository $produitsRepository)
     {
         $produits = $produitsRepository->findAll();
         return $this->json($produits, 200,[],['groups' => 'produits:read']);
@@ -61,6 +61,7 @@ class ProductController extends AbstractController
      *     description="Product not found."
      * )
      * )
+     * @Security(name="Bearer")
      */
     public function getProductDetails(Produits $produit)
     {
@@ -75,6 +76,7 @@ class ProductController extends AbstractController
      *     description="Add product",
      *     required=true,
      *     @Model(type=Produits::class))
+     * @Security(name="Bearer")
      */
     public function insertProduct(Request $request,SerializerInterface $serializer,
                                   EntityManagerInterface $em, ValidatorInterface $validator)

@@ -17,6 +17,9 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        doc:
+            pattern: ^/api/doc
+            security: false
         login:
             pattern: ^/api/login
             stateless: true
@@ -40,7 +43,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-#         - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [ POST, PUT, PATCH, DELETE ] }
+         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:

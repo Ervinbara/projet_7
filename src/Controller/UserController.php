@@ -7,6 +7,7 @@ use App\Repository\UserClientRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,6 +28,7 @@ class UserController extends AbstractController
      *     description="Return l'ensemble des utilisateurs liée à un client",
      *     @Model(type=UserClient::class, groups={"user:read"})
      * )
+     * @Security(name="Bearer")
      */
     public function getUsers(UserClientRepository $UserClientRepository)
     {
@@ -67,9 +69,9 @@ class UserController extends AbstractController
      * @TAG\Tag(name="Users")
      * @Security(name="Bearer")
      */
-    public function getUserDetails(UserClient $user, UserClientRepository $UserClientRepository):Response
+    public function getUserDetail(UserClientRepository $UserClientRepository, string $id):Response
     {
-        $user = $UserClientRepository->findByClient($this->getUser());
+        $user = $UserClientRepository->findByClientAndUser($this->getUser(), $id);
         return $this->json($user, 200,[],['groups' => 'user:detail']);
     }
 
@@ -143,7 +145,7 @@ class UserController extends AbstractController
      *     @TAG\Schema(type="integer")
      * )
      * @TAG\Response(
-     *     response=204,
+     *     response=200,
      *     description="Success, User deleted."
      * )
      * @TAG\Response(
@@ -158,23 +160,25 @@ class UserController extends AbstractController
      *     response=404,
      *     description="User not found."
      * )
+     *
+     * * @TAG\Response(
+     *     response=500,
+     *     description="Error 500, please contact ADMIN."
+     * )
+     *
      * @TAG\Tag(name="Users")
      * @Security(name="Bearer")
      */
-    public function deleteUser(UserClient $user)
+    public function deleteUser(UserClient $user): JsonResponse
     {
-        try {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
-            return $this->json('Suppresion de l\'utilisateur effectué', 201);
-        } catch(NotEncodableValueException $e){
-            {
-                return $this->json([
-                    'status' => 400,
-                    'message' => $e->getMessage()
-                ],400);
-            }
+        if($this->getUser()->getId() !== $user->getClient()->getId()){
+            return $this->json(null,403);
         }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+        return $this->json('Suppression de l\'utilisateur effectué', 200);
+
     }
 }
