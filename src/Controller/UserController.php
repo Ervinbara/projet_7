@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\UserClient;
 use App\Repository\UserClientRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Nelmio\ApiDocBundle\Annotation\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +27,10 @@ class UserController extends AbstractController
      *     description="Return l'ensemble des utilisateurs liée à un client",
      *     @Model(type=UserClient::class, groups={"user:read"})
      * )
-     * @Security(name="Bearer")
+     * @TAG\Response(
+     *     response=401,
+     *     description="JWT Token not found | Expired JWT Token"
+     * )
      */
     public function getUsers(UserClientRepository $UserClientRepository)
     {
@@ -67,11 +69,16 @@ class UserController extends AbstractController
      *     description="User not found."
      * )
      * @TAG\Tag(name="Users")
-     * @Security(name="Bearer")
      */
     public function getUserDetail(UserClientRepository $UserClientRepository, string $id):Response
     {
         $user = $UserClientRepository->findByClientAndUser($this->getUser(), $id);
+        if ($user === NULL){
+            return $this->json([
+                'status' => 404,
+                'message' => "No users have this id"
+            ],404);
+        }
         return $this->json($user, 200,[],['groups' => 'user:detail']);
     }
 
@@ -102,7 +109,6 @@ class UserController extends AbstractController
      *     description="Internal Error"
      * )
      * @TAG\Tag(name="Users")
-     * @Security(name="Bearer")
      */
     public function insertUsers(Request $request,SerializerInterface $serializer,
                                 EntityManagerInterface $em, ValidatorInterface $validator)
@@ -167,7 +173,6 @@ class UserController extends AbstractController
      * )
      *
      * @TAG\Tag(name="Users")
-     * @Security(name="Bearer")
      */
     public function deleteUser(UserClient $user): JsonResponse
     {
@@ -178,7 +183,7 @@ class UserController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
-        return $this->json('Suppression de l\'utilisateur effectué', 200);
+        return $this->json('User deleted successfully', 200);
 
     }
 }

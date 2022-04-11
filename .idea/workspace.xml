@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="Ajout response code 200 pour l'api">
+    <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="Mise en place de la sécurité sur la documentation de l'api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/nelmio_api_doc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/nelmio_api_doc.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes/annotations.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/annotations.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserClientRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +263,8 @@
       <workItem from="1649418947014" duration="10581000" />
       <workItem from="1649517088086" duration="7252000" />
       <workItem from="1649541566340" duration="1685000" />
-      <workItem from="1649606373683" duration="6636000" />
+      <workItem from="1649606373683" duration="8019000" />
+      <workItem from="1649685342419" duration="2859000" />
     </task>
     <task id="LOCAL-00001" summary="Création de la base de données">
       <created>1648214583309</created>
@@ -346,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649526555470</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Mise en place de la sécurité sur la documentation de l'api">
+      <created>1649614023708</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1649614023708</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +393,8 @@
     <MESSAGE value="Mise en place de la documentation avec NelmioApi" />
     <MESSAGE value="Ajout en de détail sur la documentation de l'api" />
     <MESSAGE value="Ajout response code 200 pour l'api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout response code 200 pour l'api" />
+    <MESSAGE value="Mise en place de la sécurité sur la documentation de l'api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mise en place de la sécurité sur la documentation de l'api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
