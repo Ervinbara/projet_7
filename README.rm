@@ -1,0 +1,37 @@
+Parcours Développeur d'application - PHP / Symfony
+Projet 7 OpenClassrooms - BileMo
+
+SymfonyInsight : Platinum medal
+https://insight.symfony.com/projects/d13f98f9-a05a-414d-ae69-add159d8eca2/analyses/10
+
+L'objectif de ce projet est d'exposez un certain nombre d’API pour que les applications des autres plateformes web puissent effectuer des opérations.
+
+Symfony 5.4.6
+NelmioBundle API-Doc-Bundle
+Lexik JWT-Authentication-Bundle
+
+Prérequis : 
+- PHP version 7.3 minimum
+- Un système de gestion de base de données (SGBD : MySQL version 5.0.3 minimum)
+- Il faut Composer et Git
+
+
+Pour générer les clés JWT :
+1 ) mkdir -p config/jwt
+2) openssl genrsa -out config/jwt/private.pem -aes256 4096
+3) openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+
+Installation : 
+
+Etape 1 : Cloner le Repositary sur machine avec la commande : git clone https://github.com/Ervinbara/projet_7.git
+        - Se placer dans le répertoire du projet
+
+Etape 2 : Installez les dépendances du projet avec : composer install
+
+Etape 3 : Remplir le fichier .env
+
+Etape 4 : Créer une base de données sur votre SGBD avec la commande : php bin/console doctrine:database:create
+            Créez les tables de la base de données : php bin/console doctrine:schema:update --force
+
+Auteur
+Bara Ervin

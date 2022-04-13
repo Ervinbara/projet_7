@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\UserClient;
 use App\Repository\UserClientRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as TAG;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,8 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use OpenApi\Annotations as TAG;
-use Nelmio\ApiDocBundle\Annotation\Model;
 
 class UserController extends AbstractController
 {
@@ -37,7 +37,7 @@ class UserController extends AbstractController
         // Récupéreratio des utilisateurs liée au client
         $users = $UserClientRepository->findByClient($this->getUser());
         // Pour faire le tout en une ligne :
-        return $this->json($users, 200,[],['groups' => 'user:read']);
+        return $this->json($users, 200, [], ['groups' => 'user:read']);
     }
 
     /**
@@ -70,16 +70,16 @@ class UserController extends AbstractController
      * )
      * @TAG\Tag(name="Users")
      */
-    public function getUserDetail(UserClientRepository $UserClientRepository, string $id):Response
+    public function getUserDetail(UserClientRepository $UserClientRepository, string $id): Response
     {
         $user = $UserClientRepository->findByClientAndUser($this->getUser(), $id);
-        if ($user === NULL){
+        if ($user === NULL) {
             return $this->json([
                 'status' => 404,
                 'message' => "No users have this id"
-            ],404);
+            ], 404);
         }
-        return $this->json($user, 200,[],['groups' => 'user:detail']);
+        return $this->json($user, 200, [], ['groups' => 'user:detail']);
     }
 
     /**
@@ -110,20 +110,20 @@ class UserController extends AbstractController
      * )
      * @TAG\Tag(name="Users")
      */
-    public function insertUsers(Request $request,SerializerInterface $serializer,
+    public function insertUsers(Request                $request, SerializerInterface $serializer,
                                 EntityManagerInterface $em, ValidatorInterface $validator)
     {
         $client = $this->getUser();
         $jsonRetrieve = $request->getContent();
         // Désérialization on par de JSON et on le transforme en tableau associatif php
         // On récupère le json, et on le tranforme en tableau associatif qui se base sur l'entité Produits
-        try{
-            $user = $serializer->deserialize($jsonRetrieve,UserClient::class,'json');
+        try {
+            $user = $serializer->deserialize($jsonRetrieve, UserClient::class, 'json');
 
             // On vérifie si il y a des erreurs
             $errors = $validator->validate($user);
-            if(count($errors) > 0){
-                return $this->json($errors,400);
+            if (count($errors) > 0) {
+                return $this->json($errors, 400);
             }
             $user->setClient($client);
 
@@ -131,14 +131,15 @@ class UserController extends AbstractController
             $em->flush();
 
             // Status 201 veux dire qu'une ressource à été crée sur le serveur
-            return $this->json($user, 201,[],["groups" => 'user:read']);
-        } catch(NotEncodableValueException $e) {
+            return $this->json($user, 201, [], ["groups" => 'user:read']);
+        } catch (NotEncodableValueException $e) {
             return $this->json([
                 'status' => 400,
                 'message' => $e->getMessage()
-            ],400);
+            ], 400);
         }
     }
+
     /**
      * Suppression d'un utilisateur
      * @Route("/api/users/delete/{id}", name="api_users_delete", methods="DELETE")
@@ -176,8 +177,8 @@ class UserController extends AbstractController
      */
     public function deleteUser(UserClient $user): JsonResponse
     {
-        if($this->getUser()->getId() !== $user->getClient()->getId()){
-            return $this->json(null,403);
+        if ($this->getUser()->getId() !== $user->getClient()->getId()) {
+            return $this->json(null, 403);
         }
 
         $em = $this->getDoctrine()->getManager();
