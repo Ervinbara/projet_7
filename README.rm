@@ -2,9 +2,9 @@ Parcours Développeur d'application - PHP / Symfony
 Projet 7 OpenClassrooms - BileMo
 
 SymfonyInsight : Platinum medal
-A CHANGER : https://insight.symfony.com/projects/057d7b91-d5a5-4685-a222-12db7d6a34bc/analyses/22
+https://insight.symfony.com/projects/d13f98f9-a05a-414d-ae69-add159d8eca2/analyses/10
 
-L'objectif de ce projet est de développer un site communautaire de partage de figures de snowboard.
+L'objectif de ce projet est d'exposez un certain nombre d’API pour que les applications des autres plateformes web puissent effectuer des opérations.
 
 Symfony 5.4.6
 NelmioBundle API-Doc-Bundle
