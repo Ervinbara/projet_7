@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Produits;
 use App\Repository\ProduitsRepository;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as TAG;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use OpenApi\Annotations as TAG;
-use Nelmio\ApiDocBundle\Annotation\Model;
 
 
 class ProductController extends AbstractController
@@ -34,7 +34,7 @@ class ProductController extends AbstractController
     public function getProducts(ProduitsRepository $produitsRepository)
     {
         $produits = $produitsRepository->findAll();
-        return $this->json($produits, 200,[],['groups' => 'produits:read']);
+        return $this->json($produits, 200, [], ['groups' => 'produits:read']);
     }
 
     /**
@@ -65,6 +65,6 @@ class ProductController extends AbstractController
      */
     public function getProductDetails(Produits $produit)
     {
-        return $this->json($produit, 200,[],['groups' => 'produits:detail']);
+        return $this->json($produit, 200, [], ['groups' => 'produits:detail']);
     }
 }
