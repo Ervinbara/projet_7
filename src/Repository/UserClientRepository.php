@@ -50,6 +50,11 @@ class UserClientRepository extends ServiceEntityRepository
         return $this->findBy(["client" => $client]);
     }
 
+
+    public function findByClientAndUser(Client $client, string $id){
+        return $this->findOneBy(["client" => $client, "id" => $id]);
+    }
+
     // /**
     //  * @return UserClient[] Returns an array of UserClient objects
     //  */

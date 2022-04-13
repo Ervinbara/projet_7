@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="Récuprations des users, réglages problème référence circulaire et mise en place du test pour générer un token">
-      <change afterPath="$PROJECT_DIR$/templates/bundles/NelmioApiDocBundle/SwaggerUi/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Api/productsTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Api/usersTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bileMo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bileMo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="266403bd-28b4-43e7-862a-130d25236c59" name="Changes" comment="Mise en place de la sécurité sur la documentation de l'api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produits.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/UserClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Api/loginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/loginTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +189,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="PHPUnit.loginTest.testGetUsers">
@@ -232,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.loginTest.testTokenIsValid" />
         <item itemvalue="PHPUnit.loginTest.testGetUsers" />
+        <item itemvalue="PHPUnit.loginTest.testGetProducts" />
         <item itemvalue="PHPUnit.loginTest.testGetDetailsProducts" />
         <item itemvalue="PHPUnit.loginTest" />
-        <item itemvalue="PHPUnit.loginTest.testGetProducts" />
-        <item itemvalue="PHPUnit.loginTest.testTokenIsValid" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +260,11 @@
       <workItem from="1649247148174" duration="4507000" />
       <workItem from="1649256317943" duration="1273000" />
       <workItem from="1649321775318" duration="613000" />
-      <workItem from="1649418947014" duration="9769000" />
+      <workItem from="1649418947014" duration="10581000" />
+      <workItem from="1649517088086" duration="7252000" />
+      <workItem from="1649541566340" duration="1685000" />
+      <workItem from="1649606373683" duration="8019000" />
+      <workItem from="1649685342419" duration="2859000" />
     </task>
     <task id="LOCAL-00001" summary="Création de la base de données">
       <created>1648214583309</created>
@@ -331,7 +322,35 @@
       <option name="project" value="LOCAL" />
       <updated>1649008533226</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Mise en place de la documentation avec NelmioApi">
+      <created>1649446825611</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649446825611</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Ajout en de détail sur la documentation de l'api">
+      <created>1649525501704</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1649525501704</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Ajout response code 200 pour l'api">
+      <created>1649526555470</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1649526555470</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Mise en place de la sécurité sur la documentation de l'api">
+      <created>1649614023708</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1649614023708</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,7 +390,11 @@
     <MESSAGE value="no commit message" />
     <MESSAGE value="Créations des endpoints et des controllers" />
     <MESSAGE value="Récuprations des users, réglages problème référence circulaire et mise en place du test pour générer un token" />
-    <option name="LAST_COMMIT_MESSAGE" value="Récuprations des users, réglages problème référence circulaire et mise en place du test pour générer un token" />
+    <MESSAGE value="Mise en place de la documentation avec NelmioApi" />
+    <MESSAGE value="Ajout en de détail sur la documentation de l'api" />
+    <MESSAGE value="Ajout response code 200 pour l'api" />
+    <MESSAGE value="Mise en place de la sécurité sur la documentation de l'api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mise en place de la sécurité sur la documentation de l'api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
