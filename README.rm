@@ -6,6 +6,7 @@ https://insight.symfony.com/projects/d13f98f9-a05a-414d-ae69-add159d8eca2/analys
 
 L'objectif de ce projet est d'exposez un certain nombre d’API pour que les applications des autres plateformes web puissent effectuer des opérations.
 
+Utilisation de :
 Symfony 5.4.6
 NelmioBundle API-Doc-Bundle
 Lexik JWT-Authentication-Bundle
