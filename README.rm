@@ -19,8 +19,7 @@ Prérequis :
 
 Pour générer les clés JWT :
 1 ) mkdir -p config/jwt
-2) openssl genrsa -out config/jwt/private.pem -aes256 4096
-3) openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+2) php bin/console lexik:jwt:generate-keypair
 
 Installation : 
 
@@ -32,7 +31,7 @@ Etape 2 : Installez les dépendances du projet avec : composer install
 Etape 3 : Remplir le fichier .env
 
 Etape 4 : Créer une base de données sur votre SGBD avec la commande : php bin/console doctrine:database:create
-            Créez les tables de la base de données : php bin/console doctrine:schema:update --force
+          Créez les tables de la base de données : php bin/console doctrine:schema:update --force
 
 Auteur
 Bara Ervin
