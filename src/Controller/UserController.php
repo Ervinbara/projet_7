@@ -37,7 +37,9 @@ class UserController extends AbstractController
         // Récupéreratio des utilisateurs liée au client
         $users = $UserClientRepository->findByClient($this->getUser());
         // Pour faire le tout en une ligne :
-        return $this->json($users, 200, [], ['groups' => 'user:read']);
+        $response = $this->json($users, 200, [], ['groups' => 'user:read']);
+        $response->setSharedMaxAge(3600);
+        return $response;
     }
 
     /**
@@ -79,7 +81,9 @@ class UserController extends AbstractController
                 'message' => "No users have this id"
             ], 404);
         }
-        return $this->json($user, 200, [], ['groups' => 'user:detail']);
+        $response = $this->json($user, 200, [], ['groups' => 'user:detail']);
+        $response->setSharedMaxAge(3600);
+        return $response;
     }
 
     /**
@@ -110,7 +114,7 @@ class UserController extends AbstractController
      * )
      * @TAG\Tag(name="Users")
      */
-    public function insertUsers(Request                $request, SerializerInterface $serializer,
+    public function insertUsers(Request $request, SerializerInterface $serializer,
                                 EntityManagerInterface $em, ValidatorInterface $validator)
     {
         $client = $this->getUser();
@@ -131,7 +135,9 @@ class UserController extends AbstractController
             $em->flush();
 
             // Status 201 veux dire qu'une ressource à été crée sur le serveur
-            return $this->json($user, 201, [], ["groups" => 'user:read']);
+            $response = $this->json($user, 201, [], ["groups" => 'user:read']);
+            $response->setSharedMaxAge(3600);
+            return $response;
         } catch (NotEncodableValueException $e) {
             return $this->json([
                 'status' => 400,
@@ -184,7 +190,9 @@ class UserController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
-        return $this->json('User deleted successfully', 200);
+        $response = $this->json('User deleted successfully', 200);
+        $response->setSharedMaxAge(3600);
+        return $response;
 
     }
 }
