@@ -35,7 +35,7 @@ class ProductController extends AbstractController
     {
         $produits = $produitsRepository->findAll();
         $response = $this->json($produits, 200, [], ['groups' => 'produits:read']);
-        $response->setSharedMaxAge(3600);
+        $response->setPublic()->setSharedMaxAge(3600);
         return $response;
     }
 
@@ -68,7 +68,7 @@ class ProductController extends AbstractController
     public function getProductDetails(Produits $produit)
     {
         $response = $this->json($produit, 200, [], ['groups' => 'produits:detail']);
-        $response->setSharedMaxAge(3600);
+        $response->setPublic()->setSharedMaxAge(3600);
         return $response;
     }
 }

@@ -25,9 +25,6 @@ class UserClientNormalizer implements ContextAwareNormalizerInterface
         $data['href']['self'] = $this->router->generate('api_user_detail', [
             'id' => $topic->getId(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
-        $data['href']['add'] = $this->router->generate('api_users_insert', [
-            'id' => $topic->getId(),
-        ], UrlGeneratorInterface::ABSOLUTE_URL);
         $data['href']['delete'] = $this->router->generate('api_users_delete', [
             'id' => $topic->getId(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);

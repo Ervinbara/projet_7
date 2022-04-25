@@ -38,7 +38,7 @@ class UserController extends AbstractController
         $users = $UserClientRepository->findByClient($this->getUser());
         // Pour faire le tout en une ligne :
         $response = $this->json($users, 200, [], ['groups' => 'user:read']);
-        $response->setSharedMaxAge(3600);
+        $response->setPublic()->setSharedMaxAge(3600);
         return $response;
     }
 
@@ -70,7 +70,6 @@ class UserController extends AbstractController
      *     response=404,
      *     description="User not found."
      * )
-     * @TAG\Tag(name="Users")
      */
     public function getUserDetail(UserClientRepository $UserClientRepository, string $id): Response
     {
@@ -78,11 +77,11 @@ class UserController extends AbstractController
         if ($user === NULL) {
             return $this->json([
                 'status' => 404,
-                'message' => "No users have this id"
+                'message' => "No users has this id"
             ], 404);
         }
         $response = $this->json($user, 200, [], ['groups' => 'user:detail']);
-        $response->setSharedMaxAge(3600);
+        $response->setPublic()->setSharedMaxAge(3600);
         return $response;
     }
 
@@ -112,7 +111,6 @@ class UserController extends AbstractController
      *     response=500,
      *     description="Internal Error"
      * )
-     * @TAG\Tag(name="Users")
      */
     public function insertUsers(Request $request, SerializerInterface $serializer,
                                 EntityManagerInterface $em, ValidatorInterface $validator)
@@ -135,9 +133,8 @@ class UserController extends AbstractController
             $em->flush();
 
             // Status 201 veux dire qu'une ressource à été crée sur le serveur
-            $response = $this->json($user, 201, [], ["groups" => 'user:read']);
-            $response->setSharedMaxAge(3600);
-            return $response;
+            return $this->json($user, 201, [], ["groups" => 'user:read']);
+
         } catch (NotEncodableValueException $e) {
             return $this->json([
                 'status' => 400,
@@ -179,7 +176,6 @@ class UserController extends AbstractController
      *     description="Error 500, please contact ADMIN."
      * )
      *
-     * @TAG\Tag(name="Users")
      */
     public function deleteUser(UserClient $user): JsonResponse
     {
@@ -190,9 +186,8 @@ class UserController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
-        $response = $this->json('User deleted successfully', 200);
-        $response->setSharedMaxAge(3600);
-        return $response;
+        return $this->json('User deleted successfully', 200);
+
 
     }
 }
