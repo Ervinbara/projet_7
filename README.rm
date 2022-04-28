@@ -23,7 +23,7 @@ To generate the JWT keys :
 
 Installation:
 
-Step 1: Clone the Repositary on machine with command : git clone https://github.com/Ervinbara/projet_7.git
+Step 1: Clone the Repository on machine with command : git clone https://github.com/Ervinbara/projet_7.git
 - Go to the directory of the project
 
 Step 2 : Install the dependencies of the project by using : compose install
