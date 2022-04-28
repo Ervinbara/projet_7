@@ -145,7 +145,7 @@ class UserController extends AbstractController
 
     /**
      * Suppression d'un utilisateur
-     * @Route("/api/users/delete/{id}", name="api_users_delete", methods="DELETE")
+     * @Route("/api/users/{id}", name="api_users_delete", methods="DELETE")
      * @TAG\Tag(name="Users")
      * @TAG\Parameter(
      *     name="id",

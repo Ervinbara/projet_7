@@ -1,37 +1,37 @@
-Parcours Développeur d'application - PHP / Symfony
-Projet 7 OpenClassrooms - BileMo
+Developer PHP / Symfony formation of Openclassrooms.
+Project 7 OpenClassrooms - BileMo
 
 SymfonyInsight : Platinum medal
 https://insight.symfony.com/projects/d13f98f9-a05a-414d-ae69-add159d8eca2/analyses/10
 
-L'objectif de ce projet est d'exposez un certain nombre d’API pour que les applications des autres plateformes web puissent effectuer des opérations.
+The objective of the project is to lay out a number of APIs so that other web platform applications can perform operations.
 
-Utilisation de :
+Build with :
 Symfony 5.4.6
 NelmioBundle API-Doc-Bundle
 Lexik JWT-Authentication-Bundle
 
-Prérequis : 
+Requirements :
 - PHP version 7.3 minimum
-- Un système de gestion de base de données (SGBD : MySQL version 5.0.3 minimum)
-- Il faut Composer et Git
+- A database management system (DBMS: MySQL version 5.0.3 minimum)
+- You need Composer and Git
 
 
-Pour générer les clés JWT :
+To generate the JWT keys :
 1 ) mkdir -p config/jwt
 2) php bin/console lexik:jwt:generate-keypair
 
-Installation : 
+Installation:
 
-Etape 1 : Cloner le Repositary sur machine avec la commande : git clone https://github.com/Ervinbara/projet_7.git
-        - Se placer dans le répertoire du projet
+Step 1: Clone the Repositary on machine with command : git clone https://github.com/Ervinbara/projet_7.git
+- Go to the directory of the project
 
-Etape 2 : Installez les dépendances du projet avec : composer install
+Step 2 : Install the dependencies of the project by using : compose install
 
-Etape 3 : Remplir le fichier .env
+Step 3 : Complete the .env file
 
-Etape 4 : Créer une base de données sur votre SGBD avec la commande : php bin/console doctrine:database:create
-          Créez les tables de la base de données : php bin/console doctrine:schema:update --force
+Step 4 : Create a database on your SGBD with the command : php bin/console doctrine:database:create
+          Create the database tables : php bin/console doctrine:schema:update --force
 
-Auteur
+Author
 Bara Ervin
